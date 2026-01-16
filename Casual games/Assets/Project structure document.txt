@@ -1,0 +1,59 @@
+
+-- ASSETS STRUCTURE:
+	1. Each game has its own assets folder.
+	2. The level selection has also its own folder.
+	3. The assets used in more than one game are in another folder called something like 'shared assets'.
+
+	ASSETS FOLDERS:
+	Each game folder has the following structure (it may vary):
+		- 2D Art
+		- 3D Art
+		- Audio	
+		- GUI
+		- Materials
+		- Prefabs
+		- Resources
+		- Scenes
+		- Shaders
+		- Scripts
+			The script folder has a structure based on groups of scripts that together make a behaviour or a system. E.G. 'Player Movements' having 'Player walk' and 'Player Jump' in it.
+			This order works so that the most common dependencies are alltogether. 
+		- Third parties
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+-- HIERARCHY STRUCTURE:
+	It may vary depending on the complexity of each game.
+	- Scenography (Lights and cameras)
+	- Characters
+	- Interactive objects
+	- Static objects
+	- UI
+	- Gameplay (see *1)
+		- Match
+		- Level
+		- Game management
+	- Core (see *2)
+		- Pause system
+		- Scene transitioning
+		- Input system
+
+
+	*1 GAMEPLAY
+	Game Play code defines the interactive mechanics the player directly engages with.
+
+	Gameplay answers questions like:
+	- What is a win or loss condition?
+	- How does combat work?
+	- How do objects interact?
+
+	*2 CORE 
+	Core defines how the game runs.
+
+	Core answers questions like:
+	- Is the game in the menu, loading, playing, paused, or ended?
+	- Are we in a match, a cutscene, or a results screen?
+	- When does a level start or end?
+	- What systems should be active right now?

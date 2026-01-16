@@ -1,0 +1,9 @@
+
+Known to-dos:
+
+* CarrotGenerator -> Check if the pos to spawn the carrot is occupied. Right now they can spawn one on top of each other
+_________________________________________________
+
+Third party scripts used:
+
+* The FixedJoystick script in the UI is from the "Joystick Pack"

@@ -75,3 +75,13 @@ crashlytics-build.properties
 .gradle/
 **/Android/Prj/
 **/IL2CPP/
+
+# Unity Package cache
+Library/PackageCache/
+
+# Gradle / Android
+.gradle/
+
+# OS junk
+.DS_Store
+Thumbs.db
