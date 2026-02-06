@@ -6,52 +6,52 @@ using UnityEngine.SceneManagement;
 
 namespace ThreeD_Dodger
 {
-    public class GameLose : MonoBehaviour
+    public class Level : MonoBehaviour
     {
+        // Start
+        [SerializeField] private StoneSpawner stoneSpawner;
+
         // Lose
         public Action OnLoseGame;
         [SerializeField] private GameObject losePanel;
         [SerializeField] private Timer timer;
-        [SerializeField] private PlayerMovement playerMovement;
-        private bool gameLost = false;
-
-        // Both
         [SerializeField] private Pause pause;
+        [SerializeField] private GameUI gameUI;
+        private bool gameLost;
         private const float restartCountdownTimeLimit = 4f;
 
 
         void OnEnable()
         {
+            gameLost = false;
             OnLoseGame += GameLost;
-            OnLoseGame += timer.StopTimer;
         }
         void OnDisable()
         {
             OnLoseGame -= GameLost;
-            OnLoseGame -= timer.StopTimer;
         }
-
-        // -- -- StartMatch -- --
-
-        public void StartMatch()
+        void Start()
         {
-            pause.UnPauseMatch();
-            timer.enabled = true;
+            gameUI.DisableHUD();
         }
 
 
-        // -- -- LOSE -- --
+        public void StartLevel()
+        {
+            stoneSpawner.StartCoroutine(stoneSpawner.Cor_SpawnStone());
+            timer.StartTimer();
+        }
 
         private void GameLost()
         {
             if (gameLost)
                 return;
 
-            playerMovement.enabled = false;
-            if (losePanel)
-                losePanel.SetActive(true);
-            StartCoroutine(CorRestartCountdown());
             gameLost = true;
+            timer.StopTimer();
+            gameUI.DisableHUD();
+            losePanel.SetActive(true);
+            StartCoroutine(CorRestartCountdown());
         }
 
 
@@ -68,7 +68,10 @@ namespace ThreeD_Dodger
             RestartGameScene();
         }
 
-        private void RestartGameScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        private void RestartGameScene()
+        {
+            Time.timeScale = 1.0f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

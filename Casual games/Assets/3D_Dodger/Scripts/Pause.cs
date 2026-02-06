@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,37 +7,53 @@ namespace ThreeD_Dodger
 {
     public class Pause : MonoBehaviour
     {
-        [SerializeField] private GameObject pauseMenu;
-        private bool paused = true;
+        public Action OnPause, OnUnpause;
+        [SerializeField] private Level level;
+        private bool paused, active = true;
 
-        void Start()
+        private void OnEnable()
         {
-            Time.timeScale = 0f;
+            active = true;
+            OnPause += PauseMatch;
+            OnUnpause += UnPauseMatch;
+            level.OnLoseGame += DisablePausing;
+        } 
+        private void OnDisable()
+        {
+            OnPause -= PauseMatch;
+            OnUnpause -= UnPauseMatch;
+            level.OnLoseGame -= DisablePausing;
         }
 
-        public void PauseMatch()
+        private void PauseMatch()
         {
-            if (paused)
+            if (paused || !active)
                 return;
-            pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             paused = true;
         }
 
-        public void UnPauseMatch()
+        private void UnPauseMatch()
         {
             if (!paused)
                 return;
-            pauseMenu.SetActive(false);
             Time.timeScale = 1.0f;
             paused = false;
         }
 
         private void OnApplicationFocus(bool focus)
         {
+            if (!active)
+                return;
+
             if (!focus && !paused)
-                PauseMatch();
+                OnPause?.Invoke();
         }
 
+        private void DisablePausing()
+        {
+            active = false;
+            OnPause = null;
+        }
     }
 }

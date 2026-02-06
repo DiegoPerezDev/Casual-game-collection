@@ -10,9 +10,9 @@ namespace CarrotCollector
         [SerializeField] private CanvasScaler canvasScaler;
         void Start()
         {
-            // force landscape screen orientation
-            Screen.orientation = UnityEngine.ScreenOrientation.LandscapeLeft;
-            canvasScaler.referenceResolution = new Vector2(1920, 1080); // Landscape
+            // force portrait screen orientation
+            Screen.orientation = UnityEngine.ScreenOrientation.Portrait;
+            canvasScaler.referenceResolution = new Vector2(1080, 1920);
 
             // Block automatic rotation
             Screen.autorotateToLandscapeLeft = false;

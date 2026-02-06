@@ -1,19 +1,19 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - CarrotGenerator.CarrotGenerator
-    - CarrotGenerator.GameUI
-    - CarrotGenerator.Match
-    - CarrotGenerator.PlayerCarrotGathering
-    - CarrotGenerator.PlayerMovement
-    - CarrotGenerator.ScreenSetting
-    - CarrotGenerator.Timer
+    - CarrotCollector.CarrotGenerator
+    - CarrotCollector.Match
+    - CarrotCollector.Pause
+    - CarrotCollector.PlayerCarrotGathering
+    - CarrotCollector.PlayerMovement
+    - CarrotCollector.ScreenSetting
+    - CarrotCollector.Timer
+    - CarrotCollector.UI_Buttons
     - FixedJoystick
     - GameSelection
-    - Pause
     - ScreenSettings
-    - ThreeD_Dodger.GameLose
     - ThreeD_Dodger.GameUI
+    - ThreeD_Dodger.Level
     - ThreeD_Dodger.Pause
     - ThreeD_Dodger.PlayerCollisions
     - ThreeD_Dodger.PlayerMovement
@@ -85,22 +85,22 @@ ScriptsOnlyBuild:
     fullTypeName: GameSelection
     methodName: Button_ThreeDDodger
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotGenerator.GameUI
+    fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonResumeGame
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotGenerator.GameUI
+    fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotGenerator.GameUI
+    fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonRestartGame
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotGenerator.GameUI
+    fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonStartGame
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotGenerator.GameUI
+    fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: Pause
+    fullTypeName: CarrotCollector.Pause
     methodName: PauseMatch
   - assembly: Assembly-CSharp
     fullTypeName: ThreeD_Dodger.GameUI
@@ -169,27 +169,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 17894}
     - Class: 114
-      Script: {instanceID: 18188}
+      Script: {instanceID: 18186}
     - Class: 114
-      Script: {instanceID: 18500}
+      Script: {instanceID: 18498}
     - Class: 114
-      Script: {instanceID: 19140}
+      Script: {instanceID: 19138}
     - Class: 114
-      Script: {instanceID: 19228}
+      Script: {instanceID: 19226}
     - Class: 114
-      Script: {instanceID: 19782}
+      Script: {instanceID: 19780}
     - Class: 114
-      Script: {instanceID: 20126}
+      Script: {instanceID: 20124}
     - Class: 114
-      Script: {instanceID: 20818}
+      Script: {instanceID: 20816}
     - Class: 114
-      Script: {instanceID: 20840}
+      Script: {instanceID: 20838}
     - Class: 114
-      Script: {instanceID: 21138}
+      Script: {instanceID: 21136}
     - Class: 114
-      Script: {instanceID: 21792}
+      Script: {instanceID: 21790}
     - Class: 114
-      Script: {instanceID: 22466}
+      Script: {instanceID: 22464}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -252,23 +252,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 18082}
     - Class: 114
-      Script: {instanceID: 18188}
+      Script: {instanceID: 18186}
     - Class: 114
-      Script: {instanceID: 18826}
+      Script: {instanceID: 18824}
     - Class: 114
-      Script: {instanceID: 18948}
+      Script: {instanceID: 18946}
     - Class: 114
-      Script: {instanceID: 20126}
+      Script: {instanceID: 20124}
     - Class: 114
-      Script: {instanceID: 20320}
+      Script: {instanceID: 20318}
     - Class: 114
-      Script: {instanceID: 20818}
+      Script: {instanceID: 20816}
     - Class: 114
-      Script: {instanceID: 20822}
+      Script: {instanceID: 20820}
     - Class: 114
-      Script: {instanceID: 21138}
+      Script: {instanceID: 21136}
     - Class: 114
-      Script: {instanceID: 21544}
+      Script: {instanceID: 21542}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -319,21 +319,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 17894}
     - Class: 114
-      Script: {instanceID: 18188}
+      Script: {instanceID: 18186}
     - Class: 114
-      Script: {instanceID: 19172}
+      Script: {instanceID: 19170}
     - Class: 114
-      Script: {instanceID: 19426}
+      Script: {instanceID: 19424}
     - Class: 114
-      Script: {instanceID: 20110}
+      Script: {instanceID: 20108}
     - Class: 114
-      Script: {instanceID: 20126}
+      Script: {instanceID: 20124}
     - Class: 114
-      Script: {instanceID: 20818}
+      Script: {instanceID: 20816}
     - Class: 114
-      Script: {instanceID: 21138}
+      Script: {instanceID: 21136}
     - Class: 114
-      Script: {instanceID: 21624}
+      Script: {instanceID: 21622}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -371,9 +371,9 @@ ScriptsOnlyBuild:
     className: PanelRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 3abf1ecc0046f91ba547bf3d0a6c19ad
+      Hash: 63e2216361c29a9f6389632d0c8745d7
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
+    namespaceName: CarrotCollector
     className: ScreenSetting
   - hash:
       serializedVersion: 2
@@ -407,10 +407,10 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 9df7432977345d9d4a88f2e523c7fc31
+      Hash: 8987b4fd34e0310c2812fd5b90736c46
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
-    className: GameLose
+    className: Level
   - hash:
       serializedVersion: 2
       Hash: f778e23b6ff26b8de4721be0eb1fa240
@@ -485,7 +485,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 05f39ad5f1ca1faede2917828566685a
+      Hash: 4051bd1eeff48a466cf6f17db39c4194
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: PlayerCollisions
@@ -581,9 +581,9 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 927d7823f76c7749fe54025f9c585846
+      Hash: 05ffa31446f59209fefaed5e023583ff
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
+    namespaceName: CarrotCollector
     className: Timer
   - hash:
       serializedVersion: 2
@@ -593,16 +593,10 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 92c71afc2dc50f6d5ff8b90131e57d3f
+      Hash: 092ff8f7fd1947d69ee86d4554551212
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
+    namespaceName: CarrotCollector
     className: CarrotGenerator
-  - hash:
-      serializedVersion: 2
-      Hash: ae3854706aed80828f7f256918e7510c
-    assemblyName: Assembly-CSharp
-    namespaceName: ThreeD_Dodger
-    className: StonesPooling
   - hash:
       serializedVersion: 2
       Hash: a1ac4c50e55874de16eee3db71aa9784
@@ -677,7 +671,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 0e514cb76fac8a4855da3c62ea6e1fd8
+      Hash: fb02ba4b7fc75a2e37f3992047fd1449
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: Pause
@@ -725,9 +719,9 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 946480cfeb180fe41ed4eac6dad6d763
+      Hash: 3981088c416981b17492a99535ced641
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
+    namespaceName: CarrotCollector
     className: PlayerMovement
   - hash:
       serializedVersion: 2
@@ -743,10 +737,10 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: f0893886fc2b40bb588a4b8802311c4d
+      Hash: 7622e8602e4ce8d0244497dac6b7d279
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
-    className: GameUI
+    namespaceName: CarrotCollector
+    className: UI_Buttons
   - hash:
       serializedVersion: 2
       Hash: 4718916586b3818eb69bf65df61f0f3a
@@ -809,7 +803,7 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreak2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 0b84b6f526fb46031515379b4a92a5cf
+      Hash: f2f5917aedf7f556b2f07d1fe44872d4
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: GameUI
@@ -989,9 +983,9 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
-      Hash: da933ea98f73fbd9a69413c79abef7b9
+      Hash: 8a537f543c42023a67ec0abc2bf4d990
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
+    namespaceName: CarrotCollector
     className: Match
   - hash:
       serializedVersion: 2
@@ -1037,9 +1031,9 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: dd84015f707af43e410925984dd05021
+      Hash: afdea2b12c0590ffe7c5cf81787591d0
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotGenerator
+    namespaceName: CarrotCollector
     className: PlayerCarrotGathering
   - hash:
       serializedVersion: 2
@@ -1133,9 +1127,9 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 18378f60eed87e9fccb9362e4df356f6
+      Hash: 53bf3938309b187ec350c7e9665e5579
     assemblyName: Assembly-CSharp
-    namespaceName: 
+    namespaceName: CarrotCollector
     className: Pause
   - hash:
       serializedVersion: 2
@@ -1193,7 +1187,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: bff48dfc38ff97c0470acc7aadd20b01
+      Hash: 6cbd958e028d07b156373bc32a361bc6
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: PlayerMovement
@@ -1277,7 +1271,7 @@ ScriptsOnlyBuild:
     className: Variables
   - hash:
       serializedVersion: 2
-      Hash: bc3c983c5b03d5f79e7b66e93787f13f
+      Hash: 5fddaac3a105e18f8a367a7b47e99d1d
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: Timer
@@ -1340,4 +1334,4 @@ ScriptsOnlyBuild:
   - Assets/GameSelection/GameSelection_Scene.unity
   - Assets/CarrotCollectorGame/Scenes/CarrotCollector_Scene.unity
   - Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity
-  playerPath: C:/Users/Diego Perez/Desktop/CarrotCollectorGame/Builds/CarrotCollectorV0.2.apk
+  playerPath: C:/Users/Diego Perez/Desktop/games collection builds/Games_Collection.apk

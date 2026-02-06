@@ -6,7 +6,7 @@ namespace ThreeD_Dodger
 {
     public class PlayerCollisions : MonoBehaviour
     {
-        [SerializeField] private GameLose gameLose;
+        [SerializeField] private Level level;
         private const string obstacleTag = "Stone";
         private const string fallTag = "Fall";
 
@@ -14,11 +14,11 @@ namespace ThreeD_Dodger
         {
             if (collision.gameObject.CompareTag(obstacleTag))
             {
-                gameLose.OnLoseGame?.Invoke();
+                level.OnLoseGame?.Invoke();
             }
             else if (collision.gameObject.CompareTag(fallTag))
             {
-                gameLose.OnLoseGame?.Invoke();
+                level.OnLoseGame?.Invoke();
             }
         }
     }

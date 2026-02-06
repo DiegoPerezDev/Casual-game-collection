@@ -8,33 +8,38 @@ namespace ThreeD_Dodger
     {
         [SerializeField] private FixedJoystick joystick;
         [SerializeField] private float moveSpeed;
+        [SerializeField] private Level level;
         private Rigidbody rb;
+
+
+        void OnEnable()
+        {
+            level.OnLoseGame += DisableMovement;
+        }
+        void OnDisable()
+        {
+            level.OnLoseGame -= DisableMovement;
+        }
+        
 
         void Start()
         {
-            CheckComponentsAndValues();
+            rb = GetComponent<Rigidbody>();
         }
 
         void FixedUpdate()
         {
-            FixedMovePlayer();
+            FixedMove();
         }
 
-        private void CheckComponentsAndValues()
-        {
-            rb = GetComponent<Rigidbody>();
-            if (joystick == null)
-                enabled = false;
-            if (moveSpeed == 0)
-                Debug.LogWarning("Player movement value is set at 0, it won't move");
-        }
-
-        private void FixedMovePlayer()
+        private void FixedMove()
         {
             var translation = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, joystick.Vertical * moveSpeed * Time.fixedDeltaTime, 0);
             var newPosition = rb.position + translation;
             rb.MovePosition(newPosition);
         }
+
+        private void DisableMovement() => enabled = false;
 
     }
 }

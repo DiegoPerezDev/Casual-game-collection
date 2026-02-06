@@ -794,6 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bba6c77ff880545a1b0e2633dccefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disabled: 0
   carrot: {fileID: 5179698383520657079, guid: 9145bb162e1ae6f45b182f08befec459, type: 3}
   CarrotsHUD_TMP: {fileID: 8758829066597591430}
   match: {fileID: 1871700324}
@@ -1387,7 +1388,7 @@ Camera:
   far clip plane: 5
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2445,11 +2446,11 @@ MonoBehaviour:
   losePanel: {fileID: 2804809177589441193}
   timer: {fileID: 1871700325}
   carrotGenerator: {fileID: 1387901909}
-  playerCarrotGathering: {fileID: 253005879}
   winPanel: {fileID: 1742778363926007974}
   carrotsMaxAmount: 0
   pauseMenu: {fileID: 351624035}
   pause: {fileID: 844760858}
+  carrotGathering: {fileID: 253005879}
 --- !u!114 &1871700325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2678,9 +2679,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -429, y: 0}
-  m_SizeDelta: {x: 600, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -56.200012, y: 0}
+  m_SizeDelta: {x: 375, y: 100}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &1742778363926007974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,13 +2948,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3031,9 +3032,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 0}
-  m_SizeDelta: {x: 600, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 70.70001, y: 0}
+  m_SizeDelta: {x: 375, y: 100}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &5275612003954004175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3137,7 +3138,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 220}
+  m_SizeDelta: {x: 1080, y: 220}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &6974081107461095609
 RectTransform:
@@ -3441,13 +3442,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3498,7 +3499,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3

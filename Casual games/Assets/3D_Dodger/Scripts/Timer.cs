@@ -10,28 +10,31 @@ namespace ThreeD_Dodger
     {
         public Action OnTimerDone;
         [SerializeField] private TextMeshProUGUI HudTimer;
-        [SerializeField] private GameLose gameLose;
         private float counter = 0;
-        private bool inSceneBoot = true;
+        private bool active;
 
-
-        void OnEnable()
-        {
-            if (inSceneBoot)
-            {
-                inSceneBoot = false;
-                enabled = false;
-            }
-            ResetTime();
-        }
 
         void Update()
         {
+            if (!active)
+                return;
             UpdateTime();
             UpdateTimerUI();
         }
 
-        public void StopTimer() => enabled = false;
+        public void StartTimer()
+        {
+            ResetTime();
+            HudTimer.gameObject.SetActive(true);
+            active = true;
+        }
+        public void DisableTimer()
+        {
+            HudTimer.gameObject.SetActive(false);
+            StopTimer();
+        }
+
+        public void StopTimer() => active = false;
         private void UpdateTime() => counter += Time.deltaTime;
         private void UpdateTimerUI() => HudTimer.text = $"{(int)counter:D2}";
         private void ResetTime() => counter = 0;

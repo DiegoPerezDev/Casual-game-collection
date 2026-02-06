@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace ThreeD_Dodger
 {
+    /// <summary>
+    /// It spawns them in order, so it does not check if they are active or not.
+    /// It does not add more stones to the pool if they are all in use at the same time.
+    /// </summary>
     public class StoneSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPoint;
@@ -12,14 +16,14 @@ namespace ThreeD_Dodger
         private List<Rigidbody> stonesPool = new();
         Vector2 spawnRandomRange = new(3.5f, 2.0f);
         private int stoneSpawnedNumber;
-        private int ammountOfRocks;
-        private const float spawningDelay = 1f;
+        private int TotalRocksInPool;
+        private const float spawningDelay = 1.4f;
 
 
         void Start()
         {
             SetStonesPool();
-            ammountOfRocks = stonesPool.Count;
+            TotalRocksInPool = stonesPool.Count;
         }
 
         private void SetStonesPool()
@@ -45,9 +49,10 @@ namespace ThreeD_Dodger
             StartCoroutine(Cor_SpawnStone());
         }
 
+        // Selects the next stone available in the pool of stones.
         private Rigidbody SelectStoneToSpawn()
         {
-            if (stoneSpawnedNumber >= ammountOfRocks)
+            if (stoneSpawnedNumber >= TotalRocksInPool)
                 stoneSpawnedNumber = 0;
             return stonesPool[stoneSpawnedNumber++];
         }
