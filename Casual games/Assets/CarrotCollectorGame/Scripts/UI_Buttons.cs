@@ -20,9 +20,9 @@ namespace CarrotCollector
             match.StartMatch();
         }
 
-        public void ButtonHUDPause() => pause.PauseMatch();
+        public void ButtonHUDPause() => pause.OnPause?.Invoke();
 
-        public void ButtonResumeGame() => pause.UnPauseMatch();
+        public void ButtonResumeGame() => pause.OnUnpause?.Invoke();
 
         public void ButtonRestartGame()
         {

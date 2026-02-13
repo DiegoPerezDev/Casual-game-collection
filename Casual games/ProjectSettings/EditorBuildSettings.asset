@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity
     guid: a7b7b7a76aff60741950000edf8a95bc
+  - enabled: 1
+    path: Assets/BalloonPopper/Scenes/BalloonPopper_Scene.unity
+    guid: 2b2c146030118844cb2fe172fefc41a0
   m_configObjects: {}

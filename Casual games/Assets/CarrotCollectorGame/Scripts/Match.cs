@@ -19,13 +19,13 @@ namespace CarrotCollector
         private int carrotsGathered = 0;
 
         // Gameflow in general
+        private bool inMainmenu = true;
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private Pause pause;
         [SerializeField] private PlayerCarrotGathering carrotGathering;
         private const float restartCountdownTimeLimit = 3.2f;
 
         
-
         void OnEnable()
         {
             carrotGathering.OnCarrotGather += OnCarrotGather;
@@ -55,14 +55,15 @@ namespace CarrotCollector
 
         private void StartGame()
         {
-            // Pause so the player cannot move and the counter won't start until clicking the start button.
-            pause.PauseMatch();
+            // Pause so the timer won't start until clicking the start button.
+            pause.OnPause?.Invoke();
         }
 
         public void StartMatch()
         {
             carrotGenerator.SpawnCarrots();
-            pause.UnPauseMatch();
+            pause.EnableMinimizeOnPause();
+            pause.OnUnpause?.Invoke();
         }
 
         // -- -- Pausing -- -- 
@@ -70,7 +71,8 @@ namespace CarrotCollector
         private void Pause()
         {
             timer.stopped = true;
-            pauseMenu.SetActive(true);
+            if(!inMainmenu)
+                pauseMenu.SetActive(true);
         }
         private void Unpause()
         {

@@ -10,30 +10,44 @@ namespace CarrotCollector
     {
         public Action OnPause, OnUnpause;
         private bool paused = false;
+        private bool minimizeOnPause = false;
 
-        public void PauseMatch()
+        void OnEnable()
+        {
+            OnPause += Paused;
+            OnUnpause += UnPaused;
+        }
+        void OnDisable()
+        {
+            OnPause -= Paused;
+            OnUnpause -= UnPaused;
+        }
+
+        public void Paused()
         {
             if (paused)
                 return;
             Time.timeScale = 0f;
             paused = true;
-            OnPause();
         }
 
-        public void UnPauseMatch()
+        public void UnPaused()
         {
             if (!paused)
                 return;
             Time.timeScale = 1.0f;
             paused = false;
-            OnUnpause();
         }
 
         // Pause is not looking at the screen while unpaused
         private void OnApplicationFocus(bool focus)
         {
+            if (!minimizeOnPause)
+                return;
             if (!focus && !paused)
-                PauseMatch();
+                OnPause?.Invoke();
         }
+
+        public void EnableMinimizeOnPause() => minimizeOnPause = true;
     }
 }

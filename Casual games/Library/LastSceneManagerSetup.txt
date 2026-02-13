@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity
+- path: Assets/BalloonPopper/Scenes/BalloonPopper_Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

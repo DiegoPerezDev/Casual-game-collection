@@ -12,7 +12,7 @@ namespace CarrotCollector
         [HideInInspector] public bool stopped;
         [SerializeField] private TextMeshProUGUI HudTimer;
         private const string timerConstText = "Time left: ";
-        private const float countdownTimeLimit = 50f; //50s suggested
+        private const float countdownTimeLimit = 30f;
         private float countdownTimeLeft = countdownTimeLimit;
         
 

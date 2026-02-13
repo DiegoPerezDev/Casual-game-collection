@@ -1,6 +1,12 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BalloonPopper.Balloon
+    - BalloonPopper.BalloonsController
+    - BalloonPopper.Match
+    - BalloonPopper.Pause
+    - BalloonPopper.UI_Buttons
+    - BalloonPopper.UI_PanelsManagement
     - CarrotCollector.CarrotGenerator
     - CarrotCollector.Match
     - CarrotCollector.Pause
@@ -85,6 +91,9 @@ ScriptsOnlyBuild:
     fullTypeName: GameSelection
     methodName: Button_ThreeDDodger
   - assembly: Assembly-CSharp
+    fullTypeName: GameSelection
+    methodName: Button_BalloonPopper
+  - assembly: Assembly-CSharp
     fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonResumeGame
   - assembly: Assembly-CSharp
@@ -100,9 +109,6 @@ ScriptsOnlyBuild:
     fullTypeName: CarrotCollector.UI_Buttons
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.Pause
-    methodName: PauseMatch
-  - assembly: Assembly-CSharp
     fullTypeName: ThreeD_Dodger.GameUI
     methodName: ButtonResumeGame
   - assembly: Assembly-CSharp
@@ -119,6 +125,24 @@ ScriptsOnlyBuild:
     methodName: ButtonStartGame
   - assembly: Assembly-CSharp
     fullTypeName: ThreeD_Dodger.GameUI
+    methodName: ButtonHUDPause
+  - assembly: Assembly-CSharp
+    fullTypeName: BalloonPopper.UI_Buttons
+    methodName: ButtonStartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: BalloonPopper.UI_Buttons
+    methodName: ButtonRestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: BalloonPopper.UI_Buttons
+    methodName: ButtonResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: BalloonPopper.UI_Buttons
+    methodName: ButtonGameSelection
+  - assembly: Assembly-CSharp
+    fullTypeName: BalloonPopper.UI_Buttons
+    methodName: ButtonGameSelection
+  - assembly: Assembly-CSharp
+    fullTypeName: BalloonPopper.UI_Buttons
     methodName: ButtonHUDPause
   sceneClasses:
     Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity:
@@ -169,27 +193,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 17894}
     - Class: 114
-      Script: {instanceID: 18186}
+      Script: {instanceID: 18188}
     - Class: 114
-      Script: {instanceID: 18498}
+      Script: {instanceID: 18500}
     - Class: 114
-      Script: {instanceID: 19138}
+      Script: {instanceID: 19140}
     - Class: 114
-      Script: {instanceID: 19226}
+      Script: {instanceID: 19228}
     - Class: 114
-      Script: {instanceID: 19780}
+      Script: {instanceID: 19782}
     - Class: 114
-      Script: {instanceID: 20124}
+      Script: {instanceID: 20126}
     - Class: 114
-      Script: {instanceID: 20816}
+      Script: {instanceID: 20822}
     - Class: 114
-      Script: {instanceID: 20838}
+      Script: {instanceID: 20844}
     - Class: 114
-      Script: {instanceID: 21136}
+      Script: {instanceID: 21144}
     - Class: 114
-      Script: {instanceID: 21790}
+      Script: {instanceID: 21798}
     - Class: 114
-      Script: {instanceID: 22464}
+      Script: {instanceID: 22478}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -201,6 +225,81 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/BalloonPopper/Scenes/BalloonPopper_Scene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 16642}
+    - Class: 114
+      Script: {instanceID: 16644}
+    - Class: 114
+      Script: {instanceID: 17692}
+    - Class: 114
+      Script: {instanceID: 17894}
+    - Class: 114
+      Script: {instanceID: 17962}
+    - Class: 114
+      Script: {instanceID: 18188}
+    - Class: 114
+      Script: {instanceID: 20126}
+    - Class: 114
+      Script: {instanceID: 20198}
+    - Class: 114
+      Script: {instanceID: 20448}
+    - Class: 114
+      Script: {instanceID: 20822}
+    - Class: 114
+      Script: {instanceID: 20884}
+    - Class: 114
+      Script: {instanceID: 21144}
+    - Class: 114
+      Script: {instanceID: 22234}
+    - Class: 114
+      Script: {instanceID: 22372}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -248,27 +347,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 17894}
     - Class: 114
-      Script: {instanceID: 18046}
+      Script: {instanceID: 18048}
     - Class: 114
-      Script: {instanceID: 18082}
+      Script: {instanceID: 18084}
     - Class: 114
-      Script: {instanceID: 18186}
+      Script: {instanceID: 18188}
     - Class: 114
-      Script: {instanceID: 18824}
+      Script: {instanceID: 18826}
     - Class: 114
-      Script: {instanceID: 18946}
+      Script: {instanceID: 18948}
     - Class: 114
-      Script: {instanceID: 20124}
+      Script: {instanceID: 20126}
     - Class: 114
-      Script: {instanceID: 20318}
+      Script: {instanceID: 20322}
     - Class: 114
-      Script: {instanceID: 20816}
+      Script: {instanceID: 20822}
     - Class: 114
-      Script: {instanceID: 20820}
+      Script: {instanceID: 20826}
     - Class: 114
-      Script: {instanceID: 21136}
+      Script: {instanceID: 21144}
     - Class: 114
-      Script: {instanceID: 21542}
+      Script: {instanceID: 21550}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -319,21 +418,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 17894}
     - Class: 114
-      Script: {instanceID: 18186}
+      Script: {instanceID: 18188}
     - Class: 114
-      Script: {instanceID: 19170}
+      Script: {instanceID: 19172}
     - Class: 114
-      Script: {instanceID: 19424}
+      Script: {instanceID: 19426}
     - Class: 114
-      Script: {instanceID: 20108}
+      Script: {instanceID: 20110}
     - Class: 114
-      Script: {instanceID: 20124}
+      Script: {instanceID: 20126}
     - Class: 114
-      Script: {instanceID: 20816}
+      Script: {instanceID: 20822}
     - Class: 114
-      Script: {instanceID: 21136}
+      Script: {instanceID: 21144}
     - Class: 114
-      Script: {instanceID: 21622}
+      Script: {instanceID: 21630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -561,6 +660,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: d3b3b4390324caff62a5d6a38ed21f19
+    assemblyName: Assembly-CSharp
+    namespaceName: BalloonPopper
+    className: UI_PanelsManagement
   - hash:
       serializedVersion: 2
       Hash: 6d394de691f6d0187f61c08889353d0e
@@ -971,6 +1076,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 17f0297841c3f9dba232f3e358f8a9d7
+    assemblyName: Assembly-CSharp
+    namespaceName: BalloonPopper
+    className: BalloonsController
+  - hash:
+      serializedVersion: 2
       Hash: d82086405f46de14829f6b4bcbdd8fc9
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1007,6 +1118,12 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
+      Hash: 2c1d7d84071c60cb21bc9670a8b9f256
+    assemblyName: Assembly-CSharp
+    namespaceName: BalloonPopper
+    className: Balloon
+  - hash:
+      serializedVersion: 2
       Hash: 1ce63d97d1ca25cba2d91d5f32fd5f79
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
@@ -1041,6 +1158,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: StoneSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: f1436270d2010ac9e13bd4a2bbcc1351
+    assemblyName: Assembly-CSharp
+    namespaceName: BalloonPopper
+    className: UI_Buttons
   - hash:
       serializedVersion: 2
       Hash: da5a949a0bbd2ff91bc51c5805c2c41f
@@ -1247,10 +1370,28 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: 9e25a8fa6f69d5a1c40977dbf2c1c906
+    assemblyName: Assembly-CSharp
+    namespaceName: CarrotCollector
+    className: ScreenSettings
+  - hash:
+      serializedVersion: 2
       Hash: d5cd7f207e91ca8336c65a577a6fb2a0
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 01ea236c79ee406a716afd4f0521da9f
+    assemblyName: Assembly-CSharp
+    namespaceName: BalloonPopper
+    className: Pause
+  - hash:
+      serializedVersion: 2
+      Hash: f22f6ccd3ccd6b7666bc8a09414df9da
+    assemblyName: Assembly-CSharp
+    namespaceName: BalloonPopper
+    className: Match
   - hash:
       serializedVersion: 2
       Hash: 9a174471d4db2c0c6d3ac47d2f818db1
@@ -1334,4 +1475,5 @@ ScriptsOnlyBuild:
   - Assets/GameSelection/GameSelection_Scene.unity
   - Assets/CarrotCollectorGame/Scenes/CarrotCollector_Scene.unity
   - Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity
-  playerPath: C:/Users/Diego Perez/Desktop/games collection builds/Games_Collection.apk
+  - Assets/BalloonPopper/Scenes/BalloonPopper_Scene.unity
+  playerPath: C:/Users/Diego Perez/Desktop/games collection builds/Games_Collection_v0.3.apk
