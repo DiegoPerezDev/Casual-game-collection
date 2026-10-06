@@ -50,6 +50,15 @@ namespace ThreeD_Dodger
 
 
         // OTHERS
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pause.OnPause?.Invoke();
+            }
+        }
+
         private void EnablePauseMenu() => pauseMenu.SetActive(true);
 
         private void DisablePauseMatch() => pauseMenu.SetActive(false);

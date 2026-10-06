@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BalloonPopper
 {
@@ -22,6 +23,14 @@ namespace BalloonPopper
             pause.OnPause   -= EnablePauseMenu;
             pause.OnUnpause -= DisablePauseMenu;
             match.OnStart   -= StartGame;
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pause.OnPause?.Invoke();
+            }
         }
 
         private void StartGame()

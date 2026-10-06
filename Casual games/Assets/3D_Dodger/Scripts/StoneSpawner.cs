@@ -67,7 +67,7 @@ namespace ThreeD_Dodger
                                     spawnPoint.position.z);
 
             stoneToSpawn.gameObject.SetActive(true);
-            stoneToSpawn.velocity = Vector3.zero;
+            stoneToSpawn.linearVelocity = Vector3.zero;
             stoneToSpawn.position = spawnPos;
         }
     }

@@ -17,4 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BalloonPopper/Scenes/BalloonPopper_Scene.unity
     guid: 2b2c146030118844cb2fe172fefc41a0
+  - enabled: 1
+    path: Assets/Block Dodger/Scenes/BlockDodger_Scene.unity
+    guid: 09f5fe4350ba8f64b8974d08d1534dac
+  - enabled: 1
+    path: Assets/MazeBall/Scenes/MazeBall.unity
+    guid: 59e29a9f6d5b17a4f95e27dde3e41474
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

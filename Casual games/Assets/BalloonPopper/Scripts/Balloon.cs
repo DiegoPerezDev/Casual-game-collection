@@ -25,7 +25,30 @@ namespace BalloonPopper
         {
             startHeight = controller.balloonStartHeight;
         }
-        
+
+        void Update()
+        {
+            if (!active)
+                return;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log(1);
+                // Convert screen mouse position to world space
+                Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                // Check if the click position overlaps this specific 2D collider
+                Collider2D hitCollider = Physics2D.OverlapPoint(mouseWorldPos);
+
+                if (hitCollider != null && hitCollider.transform == transform)
+                {
+                        Debug.Log(2);
+                        controller.OnBalloonPop?.Invoke();
+                        audioSource.Play();
+                        ResetBalloon();
+                }
+            }
+        }
 
         void FixedUpdate()
         {
@@ -43,14 +66,14 @@ namespace BalloonPopper
 
 
         // Pop the single balloon on click
-        private void OnMouseDown()
-        {
-            if (!active)
-                return;
-            controller.OnBalloonPop?.Invoke();
-            audioSource.Play();
-            ResetBalloon();
-        }
+        //private void OnMouseDown()
+        //{
+        //    if (!active)
+        //        return;
+        //    controller.OnBalloonPop?.Invoke();
+        //    audioSource.Play();
+        //    ResetBalloon();
+        //}
 
         private void ResetBalloon()
         {
