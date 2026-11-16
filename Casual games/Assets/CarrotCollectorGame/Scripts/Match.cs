@@ -1,114 +1,82 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace CarrotCollector
 {
     public class Match : MonoBehaviour
     {
-        // Lose
-        [SerializeField] private GameObject losePanel;
-        [SerializeField] private Timer timer;
-
-        // Win
-        [SerializeField] private CarrotGenerator carrotGenerator;
-        [SerializeField] private GameObject winPanel;
-        [HideInInspector] public int carrotsMaxAmount;
-        private int carrotsGathered = 0;
-
-        // Gameflow in general
-        private bool inMainmenu = true;
-        [SerializeField] private GameObject pauseMenu;
+        public event Action OnStart;
         [SerializeField] private Pause pause;
+        [SerializeField] private DownTimer timer;
         [SerializeField] private PlayerCarrotGathering carrotGathering;
+        [SerializeField] private CarrotGenerator carrotGenerator;
+        [SerializeField] private GameUI ui;
+        [SerializeField] private GameObject losePanel, winPanel;
+        [SerializeField] private int maxCarrots = 10;
+
+        private int carrotsGathered;
+        private bool gameEnded;
         private const float restartCountdownTimeLimit = 3.2f;
 
         
         void OnEnable()
         {
             carrotGathering.OnCarrotGather += OnCarrotGather;
-            timer.OnTimerDone += GameLost;
-            pause.OnPause += Pause;
-            pause.OnUnpause += Unpause;
+            timer.OnTimerDone += LoseGame;
         }
         void OnDisable()
         {
             carrotGathering.OnCarrotGather -= OnCarrotGather;
-            timer.OnTimerDone -= GameLost;
-            pause.OnPause -= Pause;
-            pause.OnUnpause -= Unpause;
+            timer.OnTimerDone -= LoseGame;
         }
 
-        private void Awake()
-        {
-            GetCarrotMaxAmount();
-        }
+
         void Start()
         {
-            StartGame();
-        }
-
-
-        // -- -- Start -- --
-
-        private void StartGame()
-        {
-            // Pause so the timer won't start until clicking the start button.
-            pause.OnPause?.Invoke();
+            StartMatch();
         }
 
         public void StartMatch()
         {
-            carrotGenerator.SpawnCarrots();
-            pause.EnableMinimizeOnPause();
-            pause.OnUnpause?.Invoke();
+            carrotGenerator.SpawnCarrots(maxCarrots);
+            ui.UpdateCarrotsInHud(carrotsGathered, maxCarrots);
+            pause.isActive = true;
+            OnStart?.Invoke();
         }
-
-        // -- -- Pausing -- -- 
-
-        private void Pause()
-        {
-            timer.stopped = true;
-            if(!inMainmenu)
-                pauseMenu.SetActive(true);
-        }
-        private void Unpause()
-        {
-            timer.stopped = false;
-            pauseMenu.SetActive(false);
-        }
-
-        // -- -- WIN -- -- 
-
-        private void GetCarrotMaxAmount() => carrotsMaxAmount = carrotGenerator ? carrotGenerator.carrotsAmount : 0;
 
         private void OnCarrotGather()
         {
-            carrotsGathered++;
+            if (gameEnded)
+                return;
 
-            if (carrotsGathered >= carrotsMaxAmount)
+            carrotsGathered++;
+            ui.UpdateCarrotsInHud(carrotsGathered, maxCarrots);
+
+            if (carrotsGathered >= maxCarrots)
                 WinGame();
         }
 
+        // -- -- WIN / LOSE -- --
+
         private void WinGame()
         {
-            if (winPanel)
-                winPanel.SetActive(true);
-            timer.enabled = false;
-            StartCoroutine(CorRestartCountdown());
+            winPanel.SetActive(true);
+            EndGame();
         }
 
-
-        // -- -- LOSE -- --
-
-        private void GameLost()
+        private void LoseGame()
         {
-            if (losePanel)
-                losePanel.SetActive(true);
+            losePanel.SetActive(true);
+            EndGame();
+        }
+
+        private void EndGame()
+        {
+            gameEnded = true;
             timer.enabled = false;
-            carrotGathering.disabled = true;
+            pause.isActive = false;
             StartCoroutine(CorRestartCountdown());
         }
 

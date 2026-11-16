@@ -4,39 +4,32 @@ ScriptsOnlyBuild:
     - BalloonPopper.Balloon
     - BalloonPopper.BalloonsController
     - BalloonPopper.Match
-    - BalloonPopper.Pause
-    - BalloonPopper.UI_Buttons
-    - BalloonPopper.UI_PanelsManagement
+    - BalloonPopper.UI
     - BlockDodger.Block
     - BlockDodger.BlockSpawner
     - BlockDodger.GameManager
-    - BlockDodger.PlayerCollision
-    - BlockDodger.PlayerMovement
+    - BlockDodger.Player
     - BlockDodger.UI
     - CarrotCollector.CarrotGenerator
+    - CarrotCollector.GameUI
     - CarrotCollector.Match
-    - CarrotCollector.Pause
     - CarrotCollector.PlayerCarrotGathering
     - CarrotCollector.PlayerMovement
-    - CarrotCollector.ScreenSetting
-    - CarrotCollector.Timer
-    - CarrotCollector.UI_Buttons
-    - FixedJoystick
+    - DownTimer
+    - FloatingJoystick
     - GameSelection
     - MazeBall.Ball
     - MazeBall.GameManager
     - MazeBall.Maze
     - MazeBall.UI
-    - ScreenSettings
-    - ThreeD_Dodger.GameUI
+    - Pause
+    - SharedUIController
     - ThreeD_Dodger.Level
-    - ThreeD_Dodger.Pause
     - ThreeD_Dodger.PlayerCollisions
     - ThreeD_Dodger.PlayerMovement
-    - ThreeD_Dodger.ScreenOrientation
     - ThreeD_Dodger.StoneSpawner
     - ThreeD_Dodger.StoneTimeDisabling
-    - ThreeD_Dodger.Timer
+    - UpTimer
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro:
@@ -62,6 +55,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -111,80 +105,77 @@ ScriptsOnlyBuild:
     fullTypeName: GameSelection
     methodName: Button_MazeBall
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonResumeGame
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonRestartGame
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonStartGame
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: CarrotCollector.Pause
-    methodName: PauseOrUnpause
-  - assembly: Assembly-CSharp
-    fullTypeName: ThreeD_Dodger.GameUI
-    methodName: ButtonResumeGame
-  - assembly: Assembly-CSharp
-    fullTypeName: ThreeD_Dodger.GameUI
-    methodName: ButtonGameSelection
-  - assembly: Assembly-CSharp
-    fullTypeName: ThreeD_Dodger.GameUI
-    methodName: ButtonRestartGame
-  - assembly: Assembly-CSharp
-    fullTypeName: ThreeD_Dodger.GameUI
-    methodName: ButtonGameSelection
-  - assembly: Assembly-CSharp
-    fullTypeName: ThreeD_Dodger.GameUI
-    methodName: ButtonStartGame
-  - assembly: Assembly-CSharp
-    fullTypeName: ThreeD_Dodger.GameUI
+    fullTypeName: SharedUIController
     methodName: ButtonHUDPause
   - assembly: Assembly-CSharp
-    fullTypeName: BalloonPopper.UI_Buttons
-    methodName: ButtonStartGame
-  - assembly: Assembly-CSharp
-    fullTypeName: BalloonPopper.UI_Buttons
-    methodName: ButtonRestartGame
-  - assembly: Assembly-CSharp
-    fullTypeName: BalloonPopper.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonResumeGame
   - assembly: Assembly-CSharp
-    fullTypeName: BalloonPopper.UI_Buttons
+    fullTypeName: SharedUIController
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: BalloonPopper.UI_Buttons
+    fullTypeName: SharedUIController
+    methodName: ButtonRestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
     methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: BalloonPopper.UI_Buttons
+    fullTypeName: SharedUIController
+    methodName: ButtonStartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
     methodName: ButtonHUDPause
   - assembly: Assembly-CSharp
-    fullTypeName: BlockDodger.UI
-    methodName: Button_ResumePause
+    fullTypeName: SharedUIController
+    methodName: ButtonStartGame
   - assembly: Assembly-CSharp
-    fullTypeName: BlockDodger.UI
-    methodName: Button_GameSelection
+    fullTypeName: SharedUIController
+    methodName: ButtonRestartGame
   - assembly: Assembly-CSharp
-    fullTypeName: BlockDodger.UI
-    methodName: Button_Pause
+    fullTypeName: SharedUIController
+    methodName: ButtonResumeGame
   - assembly: Assembly-CSharp
-    fullTypeName: MazeBall.UI
-    methodName: Button_GameSelection
+    fullTypeName: SharedUIController
+    methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: MazeBall.UI
-    methodName: Button_Pause
+    fullTypeName: SharedUIController
+    methodName: ButtonGameSelection
   - assembly: Assembly-CSharp
-    fullTypeName: MazeBall.UI
-    methodName: Button_ResumePause
+    fullTypeName: SharedUIController
+    methodName: ButtonHUDPause
   - assembly: Assembly-CSharp
-    fullTypeName: MazeBall.UI
-    methodName: Button_Reset
+    fullTypeName: SharedUIController
+    methodName: ButtonHUDPause
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
+    methodName: ButtonResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
+    methodName: ButtonGameSelection
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
+    methodName: ButtonGameSelection
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
+    methodName: ButtonHUDPause
+  - assembly: Assembly-CSharp
+    fullTypeName: SharedUIController
+    methodName: ButtonResumeGame
   sceneClasses:
     Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity:
     - Class: 1
@@ -220,41 +211,39 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25886}
+      Script: {instanceID: 25724}
     - Class: 114
-      Script: {instanceID: 26090}
+      Script: {instanceID: 25874}
     - Class: 114
-      Script: {instanceID: 26152}
+      Script: {instanceID: 26142}
     - Class: 114
-      Script: {instanceID: 26948}
+      Script: {instanceID: 26792}
     - Class: 114
-      Script: {instanceID: 26998}
+      Script: {instanceID: 26938}
     - Class: 114
-      Script: {instanceID: 27378}
+      Script: {instanceID: 26988}
     - Class: 114
-      Script: {instanceID: 27692}
+      Script: {instanceID: 27366}
     - Class: 114
-      Script: {instanceID: 27890}
+      Script: {instanceID: 27680}
     - Class: 114
-      Script: {instanceID: 28112}
+      Script: {instanceID: 27878}
     - Class: 114
-      Script: {instanceID: 28166}
+      Script: {instanceID: 28100}
     - Class: 114
-      Script: {instanceID: 28372}
+      Script: {instanceID: 28154}
     - Class: 114
-      Script: {instanceID: 28886}
+      Script: {instanceID: 28360}
     - Class: 114
-      Script: {instanceID: 29920}
+      Script: {instanceID: 28872}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 29584}
     - Class: 114
-      Script: {instanceID: 31240}
+      Script: {instanceID: 29902}
     - Class: 114
-      Script: {instanceID: 31550}
+      Script: {instanceID: 30874}
     - Class: 114
-      Script: {instanceID: 31870}
-    - Class: 114
-      Script: {instanceID: 32826}
+      Script: {instanceID: 31844}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -290,8 +279,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
-    - Class: 58
-      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 81
@@ -303,33 +290,33 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25886}
+      Script: {instanceID: 25724}
     - Class: 114
-      Script: {instanceID: 26152}
+      Script: {instanceID: 25874}
     - Class: 114
-      Script: {instanceID: 27180}
+      Script: {instanceID: 26142}
     - Class: 114
-      Script: {instanceID: 27378}
+      Script: {instanceID: 27168}
     - Class: 114
-      Script: {instanceID: 27890}
+      Script: {instanceID: 27366}
     - Class: 114
-      Script: {instanceID: 28112}
+      Script: {instanceID: 27878}
     - Class: 114
-      Script: {instanceID: 28356}
+      Script: {instanceID: 28100}
     - Class: 114
-      Script: {instanceID: 28372}
+      Script: {instanceID: 28344}
     - Class: 114
-      Script: {instanceID: 28678}
+      Script: {instanceID: 28360}
     - Class: 114
-      Script: {instanceID: 29466}
+      Script: {instanceID: 28666}
     - Class: 114
-      Script: {instanceID: 29646}
+      Script: {instanceID: 28872}
     - Class: 114
-      Script: {instanceID: 29996}
+      Script: {instanceID: 29450}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 30874}
     - Class: 114
-      Script: {instanceID: 31870}
+      Script: {instanceID: 31844}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -365,40 +352,48 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25886}
+      Script: {instanceID: 25724}
     - Class: 114
-      Script: {instanceID: 26152}
+      Script: {instanceID: 25874}
     - Class: 114
-      Script: {instanceID: 27046}
+      Script: {instanceID: 26142}
     - Class: 114
-      Script: {instanceID: 27378}
+      Script: {instanceID: 27366}
     - Class: 114
-      Script: {instanceID: 27822}
+      Script: {instanceID: 27810}
     - Class: 114
-      Script: {instanceID: 27890}
+      Script: {instanceID: 27878}
     - Class: 114
-      Script: {instanceID: 28112}
+      Script: {instanceID: 28100}
     - Class: 114
-      Script: {instanceID: 28372}
+      Script: {instanceID: 28360}
     - Class: 114
-      Script: {instanceID: 29504}
+      Script: {instanceID: 28872}
     - Class: 114
-      Script: {instanceID: 30290}
+      Script: {instanceID: 29488}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 30268}
     - Class: 114
-      Script: {instanceID: 30996}
+      Script: {instanceID: 30874}
     - Class: 114
-      Script: {instanceID: 31012}
+      Script: {instanceID: 30990}
     - Class: 114
-      Script: {instanceID: 31870}
+      Script: {instanceID: 31844}
+    - Class: 114
+      Script: {instanceID: 33074}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -438,42 +433,46 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25886}
+      Script: {instanceID: 25724}
     - Class: 114
-      Script: {instanceID: 26090}
+      Script: {instanceID: 25874}
     - Class: 114
-      Script: {instanceID: 26152}
+      Script: {instanceID: 26034}
     - Class: 114
-      Script: {instanceID: 27218}
+      Script: {instanceID: 26142}
     - Class: 114
-      Script: {instanceID: 27378}
+      Script: {instanceID: 27206}
     - Class: 114
-      Script: {instanceID: 27890}
+      Script: {instanceID: 27366}
     - Class: 114
-      Script: {instanceID: 28112}
+      Script: {instanceID: 27878}
     - Class: 114
-      Script: {instanceID: 28372}
+      Script: {instanceID: 28100}
     - Class: 114
-      Script: {instanceID: 28862}
+      Script: {instanceID: 28360}
     - Class: 114
-      Script: {instanceID: 29088}
+      Script: {instanceID: 28872}
     - Class: 114
-      Script: {instanceID: 30298}
+      Script: {instanceID: 29584}
     - Class: 114
-      Script: {instanceID: 30406}
+      Script: {instanceID: 30276}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 30384}
     - Class: 114
-      Script: {instanceID: 31870}
+      Script: {instanceID: 30874}
     - Class: 114
-      Script: {instanceID: 32128}
+      Script: {instanceID: 31612}
     - Class: 114
-      Script: {instanceID: 32216}
+      Script: {instanceID: 31844}
     - Class: 114
-      Script: {instanceID: 32730}
+      Script: {instanceID: 32188}
+    - Class: 114
+      Script: {instanceID: 32192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -512,31 +511,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25886}
+      Script: {instanceID: 25874}
     - Class: 114
-      Script: {instanceID: 25930}
+      Script: {instanceID: 25918}
     - Class: 114
-      Script: {instanceID: 26152}
+      Script: {instanceID: 26142}
     - Class: 114
-      Script: {instanceID: 26676}
+      Script: {instanceID: 26666}
     - Class: 114
-      Script: {instanceID: 26746}
+      Script: {instanceID: 27366}
     - Class: 114
-      Script: {instanceID: 27378}
+      Script: {instanceID: 27878}
     - Class: 114
-      Script: {instanceID: 27890}
+      Script: {instanceID: 28100}
     - Class: 114
-      Script: {instanceID: 28112}
+      Script: {instanceID: 28360}
     - Class: 114
-      Script: {instanceID: 28372}
+      Script: {instanceID: 30616}
     - Class: 114
-      Script: {instanceID: 30636}
+      Script: {instanceID: 30874}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 31786}
     - Class: 114
-      Script: {instanceID: 31812}
-    - Class: 114
-      Script: {instanceID: 31870}
+      Script: {instanceID: 31844}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -553,7 +550,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/MazeBall/Scenes/MazeBall.unity:
+    Assets/MazeBall/Scenes/MazeBall 2.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -585,29 +582,35 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 25886}
+      Script: {instanceID: 25724}
     - Class: 114
-      Script: {instanceID: 26152}
+      Script: {instanceID: 25874}
     - Class: 114
-      Script: {instanceID: 27338}
+      Script: {instanceID: 26142}
     - Class: 114
-      Script: {instanceID: 27378}
+      Script: {instanceID: 27326}
     - Class: 114
-      Script: {instanceID: 27890}
+      Script: {instanceID: 27366}
     - Class: 114
-      Script: {instanceID: 28112}
+      Script: {instanceID: 27878}
     - Class: 114
-      Script: {instanceID: 28372}
+      Script: {instanceID: 28100}
     - Class: 114
-      Script: {instanceID: 30894}
+      Script: {instanceID: 28360}
     - Class: 114
-      Script: {instanceID: 31200}
+      Script: {instanceID: 28872}
     - Class: 114
-      Script: {instanceID: 31766}
+      Script: {instanceID: 30874}
     - Class: 114
-      Script: {instanceID: 31870}
+      Script: {instanceID: 31178}
     - Class: 114
-      Script: {instanceID: 32702}
+      Script: {instanceID: 31740}
+    - Class: 114
+      Script: {instanceID: 31844}
+    - Class: 114
+      Script: {instanceID: 32192}
+    - Class: 114
+      Script: {instanceID: 32676}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -627,6 +630,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 3044d908cff8f618e46304356ab504cf
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Pause
   - hash:
       serializedVersion: 2
       Hash: b2d2a01a2a85d9ed12e80cb33a9a6044
@@ -663,6 +672,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: Variables
+  - hash:
+      serializedVersion: 2
+      Hash: b20e489226d0a7fe3164851383f3b3bf
+    assemblyName: Assembly-CSharp
+    namespaceName: CarrotCollector
+    className: GameUI
   - hash:
       serializedVersion: 2
       Hash: d35d813297b02080403ea856c9025c07
@@ -761,16 +776,16 @@ ScriptsOnlyBuild:
     className: UnityOnBeginDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: ea77d68bb1f801fe9e55e0337d52024a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ScreenSettings
-  - hash:
-      serializedVersion: 2
       Hash: 9dd54ce33440072d6692a67e0c384ad1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: c5216e473967888cae4d86ae772ea391
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UpTimer
   - hash:
       serializedVersion: 2
       Hash: f669be52680c88846b2093fd41d1e06e
@@ -797,7 +812,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8987b4fd34e0310c2812fd5b90736c46
+      Hash: 17b3eef02f5456cd5b95a4a2e055cd4f
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: Level
@@ -813,12 +828,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: PlayerCollisions
-  - hash:
-      serializedVersion: 2
-      Hash: f1f7feb09caebc42e0c4033601d21fab
-    assemblyName: Assembly-CSharp
-    namespaceName: BlockDodger
-    className: PlayerMovement
   - hash:
       serializedVersion: 2
       Hash: c78ed13f6b5a632d70d4f73f56ad81f2
@@ -851,13 +860,13 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: 17f0297841c3f9dba232f3e358f8a9d7
+      Hash: a179bbc86e6c1967db06295af405bd8c
     assemblyName: Assembly-CSharp
     namespaceName: BalloonPopper
     className: BalloonsController
   - hash:
       serializedVersion: 2
-      Hash: afdea2b12c0590ffe7c5cf81787591d0
+      Hash: fe8fc55a27c8f3670d0a75b0c33e88bd
     assemblyName: Assembly-CSharp
     namespaceName: CarrotCollector
     className: PlayerCarrotGathering
@@ -869,7 +878,7 @@ ScriptsOnlyBuild:
     className: UnityOnScrollRectValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a863e5b6819a4961b56355c2ba0482ea
+      Hash: b1490774c489aacd2e280d3d01b30dbe
     assemblyName: Assembly-CSharp
     namespaceName: MazeBall
     className: Maze
@@ -905,7 +914,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 377793392565087264b39f3991837edb
+      Hash: a01943abba1ed272a6bd4806059cce9e
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: StoneSpawner
@@ -917,7 +926,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: a022cd0b592477ed155c52906e163332
+      Hash: 77b4b4df77362759fadafcfc4fe02fb8
     assemblyName: Assembly-CSharp
     namespaceName: BlockDodger
     className: GameManager
@@ -977,7 +986,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 6cbd958e028d07b156373bc32a361bc6
+      Hash: 8c0b3b12cfec0951c53ff57f94464dd6
     assemblyName: Assembly-CSharp
     namespaceName: ThreeD_Dodger
     className: PlayerMovement
@@ -995,10 +1004,10 @@ ScriptsOnlyBuild:
     className: VariableJoystick
   - hash:
       serializedVersion: 2
-      Hash: d3b3b4390324caff62a5d6a38ed21f19
+      Hash: a94d33ada0603d2afbf4ee368df9990e
     assemblyName: Assembly-CSharp
     namespaceName: BalloonPopper
-    className: UI_PanelsManagement
+    className: UI
   - hash:
       serializedVersion: 2
       Hash: 915204dac8acad99f076d6e72ada0a0f
@@ -1031,7 +1040,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: f22f6ccd3ccd6b7666bc8a09414df9da
+      Hash: 6704758b8f1ce34b9566109cc5b273b9
     assemblyName: Assembly-CSharp
     namespaceName: BalloonPopper
     className: Match
@@ -1055,16 +1064,10 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 7622e8602e4ce8d0244497dac6b7d279
+      Hash: da550e556ae1f4be28f4bbadc873fe3d
     assemblyName: Assembly-CSharp
-    namespaceName: CarrotCollector
-    className: UI_Buttons
-  - hash:
-      serializedVersion: 2
-      Hash: f2f5917aedf7f556b2f07d1fe44872d4
-    assemblyName: Assembly-CSharp
-    namespaceName: ThreeD_Dodger
-    className: GameUI
+    namespaceName: 
+    className: SharedUIController
   - hash:
       serializedVersion: 2
       Hash: 51b80d3734ea86b38e3101db98029e15
@@ -1083,12 +1086,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextContainer
-  - hash:
-      serializedVersion: 2
-      Hash: a5fd3a639b10d56dd152199f0c4de49a
-    assemblyName: Assembly-CSharp
-    namespaceName: CarrotCollector
-    className: Pause
   - hash:
       serializedVersion: 2
       Hash: 7bb32d6e4c7614a97d9723ce7e26588c
@@ -1187,12 +1184,6 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 01ea236c79ee406a716afd4f0521da9f
-    assemblyName: Assembly-CSharp
-    namespaceName: BalloonPopper
-    className: Pause
-  - hash:
-      serializedVersion: 2
       Hash: 02a47340661d2ea7c6d30e292cfef403
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1239,18 +1230,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Text
-  - hash:
-      serializedVersion: 2
-      Hash: f1436270d2010ac9e13bd4a2bbcc1351
-    assemblyName: Assembly-CSharp
-    namespaceName: BalloonPopper
-    className: UI_Buttons
-  - hash:
-      serializedVersion: 2
-      Hash: 9e25a8fa6f69d5a1c40977dbf2c1c906
-    assemblyName: Assembly-CSharp
-    namespaceName: CarrotCollector
-    className: ScreenSettings
   - hash:
       serializedVersion: 2
       Hash: d5cd7f207e91ca8336c65a577a6fb2a0
@@ -1307,7 +1286,7 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 88290138d7ccc44688306ad80778a8a0
+      Hash: 1ac5a02d8dc11dd77cd9c3db824ffc43
     assemblyName: Assembly-CSharp
     namespaceName: BlockDodger
     className: UI
@@ -1319,7 +1298,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 3981088c416981b17492a99535ced641
+      Hash: 9c36031ec470a54b46eca1991c1c7be6
     assemblyName: Assembly-CSharp
     namespaceName: CarrotCollector
     className: PlayerMovement
@@ -1343,7 +1322,7 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionEnter2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8a537f543c42023a67ec0abc2bf4d990
+      Hash: 6dfd0e702598acc8cf73e73f29f675fd
     assemblyName: Assembly-CSharp
     namespaceName: CarrotCollector
     className: Match
@@ -1421,13 +1400,7 @@ ScriptsOnlyBuild:
     className: UnityOnPointerEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a13f1ef2f18596211251893ba86179e2
-    assemblyName: Assembly-CSharp
-    namespaceName: BlockDodger
-    className: PlayerCollision
-  - hash:
-      serializedVersion: 2
-      Hash: 151973fc29ea1dc3caf89105ad9a9898
+      Hash: 468af5feab1e45e6e082d1f1c7075c11
     assemblyName: Assembly-CSharp
     namespaceName: BlockDodger
     className: BlockSpawner
@@ -1445,28 +1418,16 @@ ScriptsOnlyBuild:
     className: InputField
   - hash:
       serializedVersion: 2
-      Hash: b0ea88af24144195ed9af1217e8be0fb
+      Hash: a62ee2f4fe3dffff2d13181d0e42153c
     assemblyName: Assembly-CSharp
     namespaceName: MazeBall
     className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: fb02ba4b7fc75a2e37f3992047fd1449
-    assemblyName: Assembly-CSharp
-    namespaceName: ThreeD_Dodger
-    className: Pause
   - hash:
       serializedVersion: 2
       Hash: ca7965796a6fc0e5baad4cb19f5b5ded
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnJointBreak2DMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 5fddaac3a105e18f8a367a7b47e99d1d
-    assemblyName: Assembly-CSharp
-    namespaceName: ThreeD_Dodger
-    className: Timer
   - hash:
       serializedVersion: 2
       Hash: 4fcf0bb4aff1d14a1dfcdedc4b07bd05
@@ -1493,7 +1454,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 5adf445affd2da902bad0e86577dd614
+      Hash: 774fc7c9d2dbb2d53c710e2b6d2ed769
     assemblyName: Assembly-CSharp
     namespaceName: MazeBall
     className: UI
@@ -1547,16 +1508,16 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 63e2216361c29a9f6389632d0c8745d7
-    assemblyName: Assembly-CSharp
-    namespaceName: CarrotCollector
-    className: ScreenSetting
-  - hash:
-      serializedVersion: 2
-      Hash: 092ff8f7fd1947d69ee86d4554551212
+      Hash: 1eff06571450cd9beff983d8f6ab58a4
     assemblyName: Assembly-CSharp
     namespaceName: CarrotCollector
     className: CarrotGenerator
+  - hash:
+      serializedVersion: 2
+      Hash: 254321124c0d1edfcefbab6aac910096
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DownTimer
   - hash:
       serializedVersion: 2
       Hash: 43ebd945b04bced376c791411cf5a289
@@ -1607,7 +1568,7 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: f9f8ab1b2038ce4386f3f7065c8d4ff3
+      Hash: 62950a77a7d9dfa0c044bb3a88003011
     assemblyName: Assembly-CSharp
     namespaceName: MazeBall
     className: Ball
@@ -1617,12 +1578,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnInputFieldEndEditMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 05ffa31446f59209fefaed5e023583ff
-    assemblyName: Assembly-CSharp
-    namespaceName: CarrotCollector
-    className: Timer
   - hash:
       serializedVersion: 2
       Hash: a1ac4c50e55874de16eee3db71aa9784
@@ -1635,12 +1590,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionStay2DMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 4d7f6191e412c23e7b3f578977bcc358
-    assemblyName: Assembly-CSharp
-    namespaceName: ThreeD_Dodger
-    className: ScreenOrientation
   - hash:
       serializedVersion: 2
       Hash: d82086405f46de14829f6b4bcbdd8fc9
@@ -1665,6 +1614,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 1221724d0104b4d7ffe4709f9d93a9ba
+    assemblyName: Assembly-CSharp
+    namespaceName: BlockDodger
+    className: Player
   platform: 13
   scenePathNames:
   - Assets/GameSelection/GameSelection_Scene.unity
@@ -1672,5 +1627,5 @@ ScriptsOnlyBuild:
   - Assets/3D_Dodger/Scenes/3D_Dodger_Scene.unity
   - Assets/BalloonPopper/Scenes/BalloonPopper_Scene.unity
   - Assets/Block Dodger/Scenes/BlockDodger_Scene.unity
-  - Assets/MazeBall/Scenes/MazeBall.unity
-  playerPath: C:/Users/Usuario/Desktop/GameCollections builds/Casual Games V0.5.1.apk
+  - Assets/MazeBall/Scenes/MazeBall 2.unity
+  playerPath: C:/Users/Usuario/Desktop/GameCollections builds/Casual Games V0.5.3.apk

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,34 +6,44 @@ namespace BalloonPopper
 {
     public class Match : MonoBehaviour
     {
-        public Action OnStart;
-        [HideInInspector] public int score;
-        [SerializeField] private BalloonsController balloonsController;
+        public static Match Instance { get; private set; }
+        public event Action OnStart;
+        public BalloonsController balloonsController;
+
+        [SerializeField] private UI ui;
         [SerializeField] private Pause pause;
-        [SerializeField] private TextMeshProUGUI scoreTMP;
+        [SerializeField] private SharedUIController uiController;
+        private int score;
         private bool gameLost;
 
-        private void OnEnable()
+
+        void OnEnable()
         {
-            balloonsController.OnBalloonPop += IncreaseScore;
-            balloonsController.OnBalloonOut += GameLost;
-            pause.OnPause += StopBalloons;
+            balloonsController.OnBalloonPop   += IncreaseScore;
+            balloonsController.OnBalloonOut   += GameLost;
+            uiController.OnStartButtonClicked += StartMatch;
+            pause.OnPause   += StopBalloons;
             pause.OnUnpause += ActivateBalloons;
-            OnStart += StartMatch;
         }
-        private void OnDisable()
+        void OnDisable()
         {
-            balloonsController.OnBalloonPop -= IncreaseScore;
-            balloonsController.OnBalloonOut -= GameLost;
-            pause.OnPause -= StopBalloons;
+            balloonsController.OnBalloonPop   -= IncreaseScore;
+            balloonsController.OnBalloonOut   -= GameLost;
+            uiController.OnStartButtonClicked -= StartMatch;
+            pause.OnPause   -= StopBalloons;
             pause.OnUnpause -= ActivateBalloons;
-            OnStart -= StartMatch;
+        }
+
+        void Awake()
+        {
+            Instance = this;
         }
 
         private void StartMatch()
         {
-            pause.EnableMinimizeOnPause();
+            pause.isActive = true;
             ActivateBalloons();
+            OnStart?.Invoke();
         }
 
         private void GameLost()
@@ -51,12 +58,18 @@ namespace BalloonPopper
         private void IncreaseScore()
         {
             score++;
-            scoreTMP.text = score.ToString();
+            ui.IncreaseScore(score);
+            CheckSpeedInc();
+        }
+
+        private void CheckSpeedInc()
+        {
+            if (score != 0 && (score % 8 == 0))
+                balloonsController.IncreaseSpeed();
         }
 
         private void ActivateBalloons() => balloonsController.ActivateBalloons();
-        
-        private void StopBalloons() => balloonsController.StopBalloons();
+        private void StopBalloons()     => balloonsController.StopBalloons();
 
     }
 }

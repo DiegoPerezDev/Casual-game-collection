@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BalloonPopper 
@@ -8,22 +5,15 @@ namespace BalloonPopper
     public class Balloon : MonoBehaviour
     {
         [SerializeField] private BalloonsController controller;
-        private float speed = 3f;
-        private AudioSource audioSource;
-        private float startHeight;
+        private float speed = 2.8f;
+        private bool active;
+        private const float speedIncrease = 0.4f;
         private const string topCollTag = "TopColliderBalloon";
-        private bool active = false;
+        
 
-
-        private void Awake()
+        void Awake()
         {
-            audioSource = GetComponent<AudioSource>();
-            if(controller == null)
-                controller = GetComponentInParent<BalloonsController>();
-        }
-        private void Start()
-        {
-            startHeight = controller.balloonStartHeight;
+            controller = Match.Instance.balloonsController;
         }
 
         void Update()
@@ -31,65 +21,49 @@ namespace BalloonPopper
             if (!active)
                 return;
 
-            if (Input.GetMouseButtonDown(0))
+            MoveUp();
+            if (IsClicked())
+                PopBalloon();
+        }
+
+        // Check if the balloon goes out of bounds upwards
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag(topCollTag))
+                controller.OnBalloonOut?.Invoke();
+        }
+
+
+        public void ActivateBalloon() => active = true;
+        public void StopBalloon()     => active = false;
+        public void IncreaseSpeed() => speed += speedIncrease;
+
+
+        private void MoveUp() => transform.Translate(0, speed * Time.deltaTime, 0);
+
+        private bool IsClicked()
+        {
+            if (Input.GetMouseButtonDown(0)) // Click
             {
-                Debug.Log(1);
                 // Convert screen mouse position to world space
                 Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 // Check if the click position overlaps this specific 2D collider
                 Collider2D hitCollider = Physics2D.OverlapPoint(mouseWorldPos);
-
                 if (hitCollider != null && hitCollider.transform == transform)
-                {
-                        Debug.Log(2);
-                        controller.OnBalloonPop?.Invoke();
-                        audioSource.Play();
-                        ResetBalloon();
-                }
+                    return true;
             }
+            return false;
         }
 
-        void FixedUpdate()
+        private void PopBalloon()
         {
-            if (!active)
-                return;
-            FixedMoveUp();
+            controller.OnBalloonPop?.Invoke();
+            ResetBalloonPos();
+            controller.lowestBalloon = this;
         }
 
-        private void FixedMoveUp() => transform.Translate(0, speed * Time.fixedDeltaTime, 0);
-
-
-        // Activation
-        public void ActivateBalloon() => active = true;
-        public void StopBalloon()     => active = false;
-
-
-        // Pop the single balloon on click
-        //private void OnMouseDown()
-        //{
-        //    if (!active)
-        //        return;
-        //    controller.OnBalloonPop?.Invoke();
-        //    audioSource.Play();
-        //    ResetBalloon();
-        //}
-
-        private void ResetBalloon()
-        {
-            float randomXpos = UnityEngine.Random.Range(-1.94f, 1.94f);
-            transform.position = new Vector3(randomXpos, startHeight, 0);
-        }
-
-
-        // On Balloon goes up out of bounds
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if(collision.gameObject.CompareTag(topCollTag))
-            {
-                controller.OnBalloonOut?.Invoke();
-            }
-        }
+        private void ResetBalloonPos() => transform.position = controller.GetResetPos();
 
     }
 }

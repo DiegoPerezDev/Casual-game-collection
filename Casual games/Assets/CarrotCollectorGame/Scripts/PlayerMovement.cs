@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CarrotCollector
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private FixedJoystick joystick;
+        [SerializeField] private FloatingJoystick joystick;
         [SerializeField] private float moveSpeed;
         private Rigidbody2D rb;
 

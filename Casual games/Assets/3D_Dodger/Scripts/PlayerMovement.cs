@@ -1,36 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThreeD_Dodger
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private FixedJoystick joystick;
-        [SerializeField] private float moveSpeed;
+        [SerializeField] private FloatingJoystick joystick;
         [SerializeField] private Level level;
+        [SerializeField] private float moveSpeed;
         private Rigidbody rb;
 
 
-        void OnEnable()
-        {
-            level.OnLoseGame += DisableMovement;
-        }
-        void OnDisable()
-        {
-            level.OnLoseGame -= DisableMovement;
-        }
-        
+        void OnEnable()  => level.OnLoseGame += DisableMovement;
+        void OnDisable() => level.OnLoseGame -= DisableMovement;
+        private void DisableMovement() => enabled = false;
 
-        void Start()
-        {
-            rb = GetComponent<Rigidbody>();
-        }
-
-        void FixedUpdate()
-        {
-            FixedMove();
-        }
+        void Start() => rb = GetComponent<Rigidbody>();
+        void FixedUpdate() => FixedMove();
 
         private void FixedMove()
         {
@@ -38,8 +24,6 @@ namespace ThreeD_Dodger
             var newPosition = rb.position + translation;
             rb.MovePosition(newPosition);
         }
-
-        private void DisableMovement() => enabled = false;
 
     }
 }

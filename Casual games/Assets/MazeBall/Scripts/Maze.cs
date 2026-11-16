@@ -1,17 +1,24 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 namespace MazeBall
 {
     public class Maze : MonoBehaviour
     {
+        [SerializeField] private GameManager gameManager;
         [SerializeField] private float rotateSpeed;
         [SerializeField] private float maxRotation;
         private Vector2 mouseDrag, rotation;
         private bool stopped;
 
-        private void OnEnable() => GameManager.OnGameEnds += StopMaze;
-        private void OnDisable() => GameManager.OnGameEnds -= StopMaze;
+        void OnEnable()
+        {
+            gameManager.OnGameEnds += StopMaze;
+        }
+        void OnDisable() 
+        {
+            gameManager.OnGameEnds -= StopMaze;
+        }
 
         void FixedUpdate()
         {

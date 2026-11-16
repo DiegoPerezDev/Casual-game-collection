@@ -3,37 +3,41 @@ using UnityEngine;
 
 namespace BlockDodger
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Block : MonoBehaviour
     {
-        public static Action OnBlockDestroyed;
+        private GameManager gameManager;
         private BlockSpawner blockSpawner;
         private Rigidbody2D rb;
-        private float fallVel = -7f; 
+        private const float fallVel = -5.2f; 
         private const float outOfViewHeight = -5.8f;
+        private const float speedInc = 0.4f;
+
+
+        void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            StartFalling();
+        }
+
+        void FixedUpdate()
+        {
+            if (rb.position.y < outOfViewHeight)
+            {
+                RespawnBlock();
+                gameManager.OnScoreUp?.Invoke();
+            }
+        }
 
         public void Initialize(BlockSpawner spawner)
         {
             blockSpawner = spawner;
+            gameManager  = spawner.gameManager;
         }
+        public void IncreaseSpeed() => rb.linearVelocityY -= speedInc;
 
-        private void Start()
-        {
-            rb = GetComponent<Rigidbody2D>();
-            rb.linearVelocity = new Vector2(0f, fallVel);
-        }
+        private void RespawnBlock() => transform.position = blockSpawner.GetSpawnPosition();
 
-        void Update()
-        {
-            if (transform.position.y < outOfViewHeight)
-            {
-                RestartBlock();
-                OnBlockDestroyed?.Invoke();
-            }
-        }
-
-        private void RestartBlock()
-        {
-            transform.position = blockSpawner.GetSpawnPosition();
-        }
+        private void StartFalling() => rb.linearVelocity = new Vector2(0f, fallVel);
     }
 }

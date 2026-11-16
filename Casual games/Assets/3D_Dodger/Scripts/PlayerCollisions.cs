@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThreeD_Dodger
@@ -13,13 +11,9 @@ namespace ThreeD_Dodger
         void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag(obstacleTag))
-            {
                 level.OnLoseGame?.Invoke();
-            }
             else if (collision.gameObject.CompareTag(fallTag))
-            {
                 level.OnLoseGame?.Invoke();
-            }
         }
     }
 }

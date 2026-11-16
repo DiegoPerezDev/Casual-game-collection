@@ -1,2 +1,3 @@
 - Joystick prefab from the "Joystick Pack"
 - TextMeshPro from the Unity Packages
+- GUI buttons for the pause menu from SethByrd from OpenGameArt.org

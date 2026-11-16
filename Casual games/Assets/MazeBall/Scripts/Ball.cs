@@ -2,25 +2,36 @@ using UnityEngine;
 
 namespace MazeBall
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class Ball : MonoBehaviour
     {
-        private bool gameWon;
+        [SerializeField] private GameManager gameManager;
         private readonly string finishTag = "Finish", outbound = "OutBound";
+        private Rigidbody rb;
 
-        private void OnTriggerEnter(Collider other)
+        void OnEnable()  => gameManager.OnGameEnds += StopBall;
+        void OnDisable() => gameManager.OnGameEnds -= StopBall;
+
+        void Awake()
         {
-            if (gameWon)
+            rb = GetComponent<Rigidbody>();
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (gameManager.IsGameEnded)
                 return;
 
             if (other.CompareTag(finishTag))
-            {
-                gameWon = true;
-                GameManager.OnWinGame?.Invoke();
-            }
+                gameManager.OnWinGame?.Invoke();
             else if (other.CompareTag(outbound))
-            {
-                GameManager.OnGameEnds?.Invoke();
-            }
+                gameManager.OnRestart?.Invoke();
+        }
+
+        private void StopBall()
+        {
+            rb.useGravity = false;
+            rb.Sleep();
         }
 
     }

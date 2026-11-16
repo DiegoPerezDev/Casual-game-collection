@@ -1,39 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace ThreeD_Dodger
 {
     /// <summary>
-    /// It spawns them in order, so it does not check if they are active or not.
-    /// It does not add more stones to the pool if they are all in use at the same time.
+    /// It spawns them in order. It does not check if they are active or not. It does not add more stones to the pool.
     /// </summary>
     public class StoneSpawner : MonoBehaviour
     {
+        [SerializeField] private UpTimer timer;
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private GameObject stoneGOContainer;
-        private List<Rigidbody> stonesPool = new();
-        Vector2 spawnRandomRange = new(3.5f, 2.0f);
-        private int stoneSpawnedNumber;
+        [SerializeField] private GameObject stonesParent;
+        private List<Transform> stonesPool = new();
+        private Vector2 spawnRandomRange = new(3.5f, 2.0f);
+        private int stoneToSpawnIndex;
         private int TotalRocksInPool;
-        private const float spawningDelay = 1.4f;
+        private float spawningDelay = 1.45f;
+        private bool spawning;
 
+
+        private void OnEnable() => timer.OnSecond += CheckForSpeedIncrease;
+        private void OnDisable() => timer.OnSecond -= CheckForSpeedIncrease;
 
         void Start()
         {
             SetStonesPool();
             TotalRocksInPool = stonesPool.Count;
+            
         }
 
         private void SetStonesPool()
         {
-            stonesPool = stoneGOContainer.GetComponentsInChildren<Rigidbody>().ToList();
-            foreach (var stone in stonesPool)
+            foreach (Transform stone in stonesParent.transform)
+            {
+                stonesPool.Add(stone);
                 stone.gameObject.SetActive(false);
+            }
         }
 
-        public IEnumerator Cor_SpawnStone()
+
+        // -- -- Stones spawning -- --
+
+        public void StartSpawning()
+        {
+            if (spawning)
+                return;
+            spawning = true;
+
+            stoneToSpawnIndex = TotalRocksInPool; //so in "SelectStoneIndexToSpawn()" it can get back to 0.
+            StartCoroutine(Cor_SpawnStone());
+        }
+
+        private IEnumerator Cor_SpawnStone()
         {
             float timer = 0;
             while (timer < spawningDelay)
@@ -42,23 +61,26 @@ namespace ThreeD_Dodger
                 yield return null;
             }
 
-            var stoneToSpawn = SelectStoneToSpawn();
-            SpawnStone(stoneToSpawn);
+            SpawnStone(SelectStoneIndexToSpawn());
 
             yield return null;
             StartCoroutine(Cor_SpawnStone());
         }
 
-        // Selects the next stone available in the pool of stones.
-        private Rigidbody SelectStoneToSpawn()
+        private int SelectStoneIndexToSpawn()
         {
-            if (stoneSpawnedNumber >= TotalRocksInPool)
-                stoneSpawnedNumber = 0;
-            return stonesPool[stoneSpawnedNumber++];
+            if (stoneToSpawnIndex >= TotalRocksInPool - 1)
+                stoneToSpawnIndex = 0;
+            else
+                stoneToSpawnIndex++;
+
+            return stoneToSpawnIndex;
         }
 
-        void SpawnStone(Rigidbody stoneToSpawn)
+        void SpawnStone(int stoneIndexToSpawn)
         {
+            var stoneToSpawn = stonesPool[stoneIndexToSpawn];
+
             Vector2 spawnRandomVariation = new(Random.Range(-spawnRandomRange.x, spawnRandomRange.x),
                                             Random.Range(-spawnRandomRange.y, spawnRandomRange.y));
 
@@ -66,9 +88,20 @@ namespace ThreeD_Dodger
                                     spawnPoint.position.y + spawnRandomVariation.y,
                                     spawnPoint.position.z);
 
-            stoneToSpawn.gameObject.SetActive(true);
-            stoneToSpawn.linearVelocity = Vector3.zero;
             stoneToSpawn.position = spawnPos;
+            stoneToSpawn.gameObject.SetActive(true);
         }
+
+
+        // --- --- --- Speed Increace --- --- --- 
+        private void CheckForSpeedIncrease()
+        {
+            if (timer.Counter != 0 && (int)timer.Counter % 5 == 0)
+            {
+                SpeedUpSpawning();
+            }
+        }
+
+        private void SpeedUpSpawning() => spawningDelay *= 0.95f;
     }
 }
